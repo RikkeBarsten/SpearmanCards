@@ -10,6 +10,16 @@ namespace VP_kort
     {
         static void Main(string[] args)
         {
+            Deck newDeck = new Deck();
+
+            List<Card> testDeck = newDeck.Cards;
+
+            foreach (Card card in testDeck)
+            {
+                Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Value);
+            }
+
+            Console.ReadKey();
         }
     }
 }

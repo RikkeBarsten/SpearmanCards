@@ -8,7 +8,7 @@ namespace VP_kort
 {
     enum Suit {Diamonds, Hearts, Clubs, Spades};
 
-    class Cards
+    class Card
     {
         public Suit CardSuit { get; set; }
         public int Value { get; set; }
