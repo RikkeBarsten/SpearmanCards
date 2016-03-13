@@ -16,7 +16,7 @@ namespace VP_kort
 
             foreach (Card card in testDeck)
             {
-                Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Value);
+                Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
             }
 
             Console.ReadKey();

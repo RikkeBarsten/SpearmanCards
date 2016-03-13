@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VP_kort
 {
-    class Deck
+    public class Deck
     {
         public List<Card> Cards { get; set; }
 
@@ -20,7 +20,7 @@ namespace VP_kort
                 {
                     Card card = new Card();
                     card.CardSuit = suit;
-                    card.Value = i;
+                    card.Rank = i;
                     Cards.Add(card);
                 }
             }

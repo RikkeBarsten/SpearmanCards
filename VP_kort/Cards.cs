@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace VP_kort
 {
-    enum Suit {Diamonds, Hearts, Clubs, Spades};
+    public enum Suit {Diamonds, Hearts, Clubs, Spades};
 
-    class Card
+    public class Card
     {
         public Suit CardSuit { get; set; }
-        public int Value { get; set; }
+        public int Rank { get; set; }
     }
 }
