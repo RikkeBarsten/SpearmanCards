@@ -25,7 +25,7 @@ namespace VP_kort
                 {
                     Card toBeCompared = new Card();
                     //Find the card at element i in sorted list
-                    toBeCompared = sorted.ElementAt<Card>(i);
+                    toBeCompared = sorted.ElementAt(i);
                     
                     // Calulate diff between i and index of the same card in shuffeled deck                                    
                     diff = i - shuffled.FindIndex(c => c.CardSuit == toBeCompared.CardSuit && c.Rank == toBeCompared.Rank);
@@ -35,17 +35,18 @@ namespace VP_kort
                 }
 
                 // Setting up the numerator and denominater
-                int numerator = 6 * diffSquared;
-                int denominator = sorted.Count * ((sorted.Count * sorted.Count) - 1);
+                double numerator = 6 * diffSquared;
+                double denominator = sorted.Count * ((sorted.Count * sorted.Count) - 1);
 
                 // Calculate the Spearman Coefficient (rho)
-                double rho = 1 - (numerator / denominator);
+                double rho = 1.0 - (numerator / denominator);
 
                 return rho;
             }
             else
                 // If decks are not complete
                 return 2;
+            //replace with throw argument out of range exception?
         }
     }
 }

@@ -27,7 +27,18 @@ namespace VP_kort
             }
         }
 
-        // Create shuffle method
+        public void FYShuffle()
+        {
+            Random random = new Random();
+
+            for (int i = Cards.Count -1; i > 0; --i)
+            {
+                int j = random.Next(i + 1);
+                Card temp = Cards[i];
+                Cards[i] = Cards[j];
+                Cards[j] = temp;    
+            }
+        }
 
         
     }
