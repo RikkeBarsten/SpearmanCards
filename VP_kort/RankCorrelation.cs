@@ -8,11 +8,11 @@ namespace VP_kort
 {
     public static class Spearman
     {
-        public static double RankCorrelation(List<Card> sorted, List<Card> shuffeled)
+        public static double Rho(List<Card> sorted, List<Card> shuffled)
         {
 
             // Check if both list contains 52 cards
-            if (sorted.Count == 52 && shuffeled.Count == 52)
+            if (sorted.Count == 52 && shuffled.Count == 52)
             {
 
                 // Declare and initialize diffs to be used in calculation
@@ -28,7 +28,7 @@ namespace VP_kort
                     toBeCompared = sorted.ElementAt<Card>(i);
                     
                     // Calulate diff between i and index of the same card in shuffeled deck                                    
-                    diff = i - shuffeled.FindIndex(c => c.CardSuit == toBeCompared.CardSuit && c.Rank == toBeCompared.Rank);
+                    diff = i - shuffled.FindIndex(c => c.CardSuit == toBeCompared.CardSuit && c.Rank == toBeCompared.Rank);
 
                     // Add the diff squared to the diffsquared variable
                     diffSquared += diff * diff;                   

@@ -18,17 +18,17 @@ namespace VP_kort
                 Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
             }
 
-            Deck shuffeled1 = new Deck();
-            shuffeled1.Cards.Reverse();
+            Deck shuffled1 = new Deck();
+            shuffled1.Cards.Reverse();
 
-            foreach (Card card in shuffeled1.Cards)
+            foreach (Card card in shuffled1.Cards)
             {
                 Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
             }
 
-            double rho = Spearman.RankCorrelation(sorted.Cards, shuffeled1.Cards);
+            double rho = Spearman.Rho(sorted.Cards, shuffled1.Cards);
 
-            Console.WriteLine("Spearman when reveresd (-1 expected): {0}", rho);
+            Console.WriteLine("Spearman when reversed (-1 expected): {0}", rho);
 
 
             Console.ReadKey();
