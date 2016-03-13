@@ -10,14 +10,26 @@ namespace VP_kort
     {
         static void Main(string[] args)
         {
-            Deck newDeck = new Deck();
+            Deck sorted = new Deck();
 
-            List<Card> testDeck = newDeck.Cards;
-
-            foreach (Card card in testDeck)
+            
+            foreach (Card card in sorted.Cards)
             {
                 Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
             }
+
+            Deck shuffeled1 = new Deck();
+            shuffeled1.Cards.Reverse();
+
+            foreach (Card card in shuffeled1.Cards)
+            {
+                Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
+            }
+
+            double rho = Spearman.RankCorrelation(sorted.Cards, shuffeled1.Cards);
+
+            Console.WriteLine("Spearman when reveresd (-1 expected): {0}", rho);
+
 
             Console.ReadKey();
         }

@@ -10,6 +10,7 @@ namespace VP_kort
     {
         public List<Card> Cards { get; set; }
 
+        // Initalized and create sorted deck of cards in default constructor
         public Deck()
         {
             Cards = new List<Card>();
@@ -25,6 +26,8 @@ namespace VP_kort
                 }
             }
         }
+
+        // Create shuffle method
 
         
     }
