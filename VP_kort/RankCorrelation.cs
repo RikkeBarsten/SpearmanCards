@@ -15,6 +15,7 @@ namespace VP_kort
             if (sorted.Count == 52 && shuffeled.Count == 52)
             {
 
+                // Declare and initialize diffs to be used in calculation
                 int diff = 0;
                 int diffSquared = 0;
                 
@@ -23,21 +24,27 @@ namespace VP_kort
                 for (int i = 0; i < 52; i++)
                 {
                     Card toBeCompared = new Card();
+                    //Find the card at element i in sorted list
                     toBeCompared = sorted.ElementAt<Card>(i);
-                                                        
+                    
+                    // Calulate diff between i and index of the same card in shuffeled deck                                    
                     diff = i - shuffeled.FindIndex(c => c.CardSuit == toBeCompared.CardSuit && c.Rank == toBeCompared.Rank);
-                    diffSquared += diff * diff;
-                   
+
+                    // Add the diff squared to the diffsquared variable
+                    diffSquared += diff * diff;                   
                 }
 
+                // Setting up the numerator and denominater
                 int numerator = 6 * diffSquared;
                 int denominator = sorted.Count * ((sorted.Count * sorted.Count) - 1);
 
+                // Calculate the Spearman Coefficient (rho)
                 double rho = 1 - (numerator / denominator);
 
                 return rho;
             }
             else
+                // If decks are not complete
                 return 2;
         }
     }
