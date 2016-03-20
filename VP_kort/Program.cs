@@ -24,16 +24,27 @@ namespace VP_kort
 
             double rho = Spearman.Rho(sorted.Cards, shuffled1.Cards);
 
-            Console.WriteLine("Spearman when reversed (-1 expected): {0}", rho);
+            Console.WriteLine("Spearman when reversed (-1 expected): {0:n3}", rho);
 
+            //Creating deck to test FY shuffle method
             Deck shuffled2 = new Deck();
             shuffled2.FYShuffle();
 
             double rho2 = Spearman.Rho(sorted.Cards, shuffled2.Cards);
 
-            Console.WriteLine("Spearman when FY-shuffled (0 expected): {0}", rho2);
+            Console.WriteLine("Spearman when FY-shuffled (0 expected): {0:n3}", rho2);
 
-            //Creating deck with extra card, to check exception casting
+
+            // Creating deck to test Guid Shuffle
+            Deck shuffled3 = new Deck();
+            shuffled3.GuidShuffle();
+
+            double rho3 = Spearman.Rho(sorted.Cards, shuffled3.Cards);
+
+            Console.WriteLine("Spearman when Guid-shuffled (0 expected): {0:n3}", rho3);
+
+
+            //Creating deck with extra card, to check exception throwing
             Deck errorDeck = new Deck();
             errorDeck.Cards.Add(new Card(Suit.Diamonds, 13));
 
@@ -41,15 +52,51 @@ namespace VP_kort
 
             try
             {
-                double rho3 = Spearman.Rho(sorted.Cards, errorDeck.Cards);
-                Console.WriteLine("Rho errordeck: {0}", rho3.ToString());
+                double rho4 = Spearman.Rho(sorted.Cards, errorDeck.Cards);
+                Console.WriteLine("Rho errordeck: {0}", rho4.ToString());
             }
             catch (ArgumentException errA)
             {
                 Console.WriteLine("Exception message: {0}", errA.Message);
             }
 
-           
+
+            // Creating lists of return values from rho-method, to check for result when 
+            // shuffling more decks at once:
+
+            List<double> FYShuffles = new List<double>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Deck newShuffle = new Deck();
+                newShuffle.FYShuffle();
+                FYShuffles.Add(Spearman.Rho(sorted.Cards, newShuffle.Cards));
+            }
+
+            List<double> GuidShuffles = new List<double>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Deck newShuffle = new Deck();
+                newShuffle.GuidShuffle();
+                GuidShuffles.Add(Spearman.Rho(sorted.Cards, newShuffle.Cards));
+            }
+
+            Console.WriteLine("Ten FYshuffles: ");
+
+            foreach (var r in FYShuffles)
+            {
+                Console.WriteLine("{0:n3}", r);
+            }
+
+            Console.WriteLine("Ten Guid shuffles: ");
+
+            foreach (var r in GuidShuffles)
+            {
+                Console.WriteLine("{0:n3}", r);
+            }
+
+
             Console.ReadKey();
         }
     }

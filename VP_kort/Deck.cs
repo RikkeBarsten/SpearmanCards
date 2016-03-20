@@ -44,8 +44,11 @@ namespace VP_kort
         // Second Fisher-Yates Shuffle according to Jeff Atwood: http://blog.codinghorror.com/shuffling/
         public void GuidShuffle()
         {
-            var shuffledCards = Cards.OrderBy(a => Guid.NewGuid());
-            Cards = (List<Card>)shuffledCards;
+            //var shuffledCards = Cards.OrderBy(a => Guid.NewGuid());
+            //Cards = (List<Card>)shuffledCards;
+
+            Cards = Cards.OrderBy(a => Guid.NewGuid()).ToList<Card>();
+
         }
 
 

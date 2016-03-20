@@ -21,7 +21,7 @@ namespace VP_kort
 
 
                 // For each card, add rank difference
-                for (int i = 0; i < 52; i++)
+                for (int i = 0; i < sorted.Count; i++)
                 {
                     Card toBeCompared = new Card();
                     //Find the card at element i in sorted list
@@ -48,7 +48,7 @@ namespace VP_kort
                 //return 2;
 
                 //replace with throw argument out of range exception
-                throw new ArgumentException("The two lists are not of equal size");
+                throw new ArgumentException("The two decks are not of equal size");
         }
     }
 }
