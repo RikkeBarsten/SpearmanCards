@@ -43,6 +43,15 @@ namespace VP_kort
 
             Console.WriteLine("Spearman when FY-shuffled (0 expected): {0}", rho2);
 
+            //Creating deck with extra card, to check exception casting
+            Deck errorDeck = new Deck();
+            errorDeck.Cards.Add(new Card(Suit.Diamonds, 13));
+
+            Console.WriteLine("Calling Rho-method with uneven decks - exception expected:");
+
+            double rho3 = Spearman.Rho(sorted.Cards, errorDeck.Cards);
+            Console.WriteLine("Rho errordeck: {0}", rho3.ToString());
+
 
             Console.ReadKey();
         }
