@@ -27,19 +27,27 @@ namespace VP_kort
             }
         }
 
+        // First Fisher-Yates Shuffle
         public void FYShuffle()
         {
             Random random = new Random();
 
             for (int i = Cards.Count -1; i > 0; --i)
             {
-                int j = random.Next(i + 1);
+                int j = random.Next(i-1);
                 Card temp = Cards[i];
                 Cards[i] = Cards[j];
                 Cards[j] = temp;    
             }
         }
 
-        
+        // Second Fisher-Yates Shuffle according to Jeff Atwood: http://blog.codinghorror.com/shuffling/
+        public void GuidShuffle()
+        {
+            var shuffledCards = Cards.OrderBy(a => Guid.NewGuid());
+            Cards = (List<Card>)shuffledCards;
+        }
+
+
     }
 }
