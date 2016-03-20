@@ -47,7 +47,7 @@ namespace VP_kort
                 // If decks are not complete
                 //return 2;
 
-                //replace with throw argument out of range exception?
+                //replace with throw argument out of range exception
                 throw new ArgumentException("The two lists are not of equal size");
         }
     }

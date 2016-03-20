@@ -22,22 +22,12 @@ namespace VP_kort
             Deck shuffled1 = new Deck();
             shuffled1.Cards.Reverse();
 
-            //foreach (Card card in shuffled1.Cards)
-            //{
-            //    Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
-            //}
-
             double rho = Spearman.Rho(sorted.Cards, shuffled1.Cards);
 
             Console.WriteLine("Spearman when reversed (-1 expected): {0}", rho);
 
             Deck shuffled2 = new Deck();
             shuffled2.FYShuffle();
-
-            //foreach (Card card in shuffled2.Cards)
-            //{
-            //    Console.WriteLine("Suit: {0} - Value: {1}", card.CardSuit, card.Rank);
-            //}
 
             double rho2 = Spearman.Rho(sorted.Cards, shuffled2.Cards);
 
@@ -49,10 +39,17 @@ namespace VP_kort
 
             Console.WriteLine("Calling Rho-method with uneven decks - exception expected:");
 
-            double rho3 = Spearman.Rho(sorted.Cards, errorDeck.Cards);
-            Console.WriteLine("Rho errordeck: {0}", rho3.ToString());
+            try
+            {
+                double rho3 = Spearman.Rho(sorted.Cards, errorDeck.Cards);
+                Console.WriteLine("Rho errordeck: {0}", rho3.ToString());
+            }
+            catch (ArgumentException errA)
+            {
+                Console.WriteLine("Exception message: {0}", errA.Message);
+            }
 
-
+           
             Console.ReadKey();
         }
     }
